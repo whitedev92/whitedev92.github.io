@@ -100,10 +100,6 @@
 
         <!-- Project 2: HisabSet -->
         <article class="project-card" style="--card-accent: var(--accent-emerald); --card-glow: var(--accent-emerald-glow);">
-          <div class="card-media card-media-duo">
-            <img src="assets/hisabset-desktop.png" alt="HisabSet Desktop and Mobile Experience" loading="lazy">
-            <img src="assets/hisabset-invoice.png" alt="HisabSet E-Invoice and GST Bills" loading="lazy">
-          </div>
           <div class="card-top">
             <span class="card-badge badge-emerald">Fintech</span>
             <div class="card-icon">⚡</div>
@@ -122,7 +118,13 @@
             <span class="project-tag">GST Ready</span>
             <span class="project-tag">Cross-Platform</span>
           </div>
-          <div class="card-actions">
+          <div class="card-actions card-actions-stacked">
+            <button type="button" class="btn-visuals btn-visuals-emerald" onclick="openVisuals('hisabset')">
+              <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <span>See the visuals</span>
+            </button>
             <span class="status-pill-private">
               <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
@@ -164,10 +166,6 @@
 
         <!-- Project 4: Poji -->
         <article class="project-card" style="--card-accent: var(--accent-cyan); --card-glow: var(--accent-cyan-glow);">
-          <div class="card-media card-media-duo">
-            <img src="assets/poji-focus.jpg" alt="Poji Focus Better Timer" loading="lazy">
-            <img src="assets/poji-companion.png" alt="Poji AI Focus Companion Chat" loading="lazy">
-          </div>
           <div class="card-top">
             <span class="card-badge badge-cyan">Featured Product</span>
             <div class="card-icon">⚡</div>
@@ -186,7 +184,13 @@
             <span class="project-tag">Focus Timer</span>
             <span class="project-tag">Mobile App</span>
           </div>
-          <div class="card-actions">
+          <div class="card-actions card-actions-stacked">
+            <button type="button" class="btn-visuals btn-visuals-cyan" onclick="openVisuals('poji')">
+              <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <span>See the visuals</span>
+            </button>
             <span class="status-pill-private">
               <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
@@ -259,8 +263,109 @@
     </footer>
   </div>
 
+  <!-- Visuals Lightbox Modal -->
+  <div id="visuals-modal" class="modal-backdrop" onclick="handleBackdropClick(event)">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <span class="modal-tag" id="modal-tag">Project Visuals</span>
+          <h3 class="modal-title" id="modal-title">Visual Showcase</h3>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closeVisuals()" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </div>
+
   <script>
     document.getElementById("current-year").textContent = new Date().getFullYear();
+
+    const visualsData = {
+      hisabset: {
+        title: "HisabSet — Visual Showcase",
+        tag: "Fintech & Accounting Suite",
+        images: [
+          {
+            src: "assets/hisabset-desktop.png",
+            caption: "Cross-Platform Dashboard & Ledger (Desktop & Mobile)",
+            desc: "Complete accounting suite with real-time sync across desktop (macOS & Windows) and mobile."
+          },
+          {
+            src: "assets/hisabset-invoice.png",
+            caption: "E-Invoice & E-Way Bill Generation",
+            desc: "100% GST-compliant workflow for instant invoice and bill generation straight from the application."
+          }
+        ]
+      },
+      poji: {
+        title: "Poji — Visual Showcase",
+        tag: "AI Focus Companion",
+        images: [
+          {
+            src: "assets/poji-focus.jpg",
+            caption: "Gamified Focus Timer (25:00 Focus Sessions)",
+            desc: "Stay productive with an AI companion that motivates you through every focus sprint, level up from Lv.2 to Lv.3."
+          },
+          {
+            src: "assets/poji-companion.png",
+            caption: "Interactive AI Companion & Bond Progression",
+            desc: "Chat, grow your bond, track mood, habits, and stay motivated every single day."
+          }
+        ]
+      }
+    };
+
+    function openVisuals(projectId) {
+      const data = visualsData[projectId];
+      if (!data) return;
+
+      document.getElementById("modal-tag").textContent = data.tag;
+      document.getElementById("modal-title").textContent = data.title;
+
+      const bodyEl = document.getElementById("modal-body");
+      bodyEl.innerHTML = `
+        <div class="modal-gallery">
+          ${data.images.map((img, i) => `
+            <div class="gallery-item">
+              <div class="gallery-img-wrapper">
+                <img src="${img.src}" alt="${img.caption}" loading="lazy">
+              </div>
+              <div class="gallery-meta">
+                <span class="gallery-step">0${i + 1}</span>
+                <div>
+                  <h4 class="gallery-caption">${img.caption}</h4>
+                  <p class="gallery-desc">${img.desc}</p>
+                </div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+
+      const modal = document.getElementById("visuals-modal");
+      modal.classList.add("modal-open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeVisuals() {
+      const modal = document.getElementById("visuals-modal");
+      modal.classList.remove("modal-open");
+      document.body.style.overflow = "";
+    }
+
+    function handleBackdropClick(e) {
+      if (e.target.id === "visuals-modal") {
+        closeVisuals();
+      }
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeVisuals();
+      }
+    });
   </script>
 </body>
 </html>
