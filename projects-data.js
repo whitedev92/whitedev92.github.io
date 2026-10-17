@@ -5,7 +5,7 @@ const portfolioData = {
     tagline: "Software Engineer & Builder — crafting fintech solutions, risk engines, and product platforms.",
     bio: "Passionate developer focused on building robust full-stack applications, accounting software, risk analytics, and developer tools.",
     githubUsername: "whitedev92",
-    email: "", // You can add your public email here (e.g. "contact@domain.com")
+    email: "",
     socials: {
       github: "https://github.com/whitedev92",
       twitter: "",
@@ -39,8 +39,7 @@ const portfolioData = {
         "Configurable analytical parameters and insights"
       ],
       tags: ["Fintech", "Risk Analytics", "Finance", "Data Modeling"],
-      demoUrl: "https://github.com/whitedev92/money-at-risk",
-      repoUrl: "https://github.com/whitedev92/money-at-risk",
+      isPrivate: true,
       badge: "Risk Engine",
       accent: "purple"
     },
@@ -56,8 +55,7 @@ const portfolioData = {
         "Clean, intuitive expense and income categories"
       ],
       tags: ["Fintech", "Accounting", "Bookkeeping", "Full-Stack"],
-      demoUrl: "https://github.com/whitedev92/HisabSet",
-      repoUrl: "https://github.com/whitedev92/HisabSet",
+      isPrivate: true,
       badge: "Fintech",
       accent: "emerald"
     },
@@ -73,8 +71,7 @@ const portfolioData = {
         "Real-time state and status tracking"
       ],
       tags: ["Productivity", "Workflow", "Task Management", "Web App"],
-      demoUrl: "https://github.com/whitedev92/on-it",
-      repoUrl: "https://github.com/whitedev92/on-it",
+      isPrivate: true,
       badge: "Productivity",
       accent: "cyan"
     },
@@ -90,8 +87,7 @@ const portfolioData = {
         "Optimized client-side performance and state management"
       ],
       tags: ["JavaScript", "UI/UX", "Modern Web", "Platform"],
-      demoUrl: "https://github.com/whitedev92/Poji",
-      repoUrl: "https://github.com/whitedev92/Poji",
+      isPrivate: true,
       badge: "Featured Product",
       accent: "cyan"
     }

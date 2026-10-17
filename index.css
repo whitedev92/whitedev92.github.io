@@ -629,3 +629,19 @@ body {
     padding: 1.5rem;
   }
 }
+
+.status-pill-private {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.85rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  font-weight: 500;
+  width: 100%;
+  justify-content: center;
+}
+
