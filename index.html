@@ -11,8 +11,251 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <!-- CSS Stylesheet -->
-  <link rel="stylesheet" href="index.css">
+  <!-- CSS Stylesheet with Cache Buster -->
+  <link rel="stylesheet" href="index.css?v=4.0">
+
+  <!-- Embedded Critical Styles (Guarantee perfect rendering regardless of CDN/browser caching) -->
+  <style>
+    /* Theme-Matching View Visuals Button */
+    .btn-visuals-action {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 0.55rem !important;
+      width: 100% !important;
+      padding: 0.75rem 1.4rem !important;
+      border-radius: 9999px !important;
+      font-family: 'Space Grotesk', -apple-system, sans-serif !important;
+      font-size: 0.92rem !important;
+      font-weight: 700 !important;
+      cursor: pointer !important;
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      text-decoration: none !important;
+      border: none !important;
+      outline: none !important;
+      letter-spacing: -0.01em !important;
+    }
+
+    /* Emerald Theme for HisabSet */
+    .btn-theme-emerald {
+      background: linear-gradient(135deg, #10b981, #059669) !important;
+      color: #030712 !important;
+      box-shadow: 0 4px 22px rgba(16, 185, 129, 0.35) !important;
+    }
+    .btn-theme-emerald:hover {
+      transform: translateY(-2px) !important;
+      background: linear-gradient(135deg, #34d399, #10b981) !important;
+      box-shadow: 0 6px 30px rgba(16, 185, 129, 0.6) !important;
+    }
+
+    /* Cyan Theme for Poji */
+    .btn-theme-cyan {
+      background: linear-gradient(135deg, #38bdf8, #0284c7) !important;
+      color: #030712 !important;
+      box-shadow: 0 4px 22px rgba(56, 189, 248, 0.35) !important;
+    }
+    .btn-theme-cyan:hover {
+      transform: translateY(-2px) !important;
+      background: linear-gradient(135deg, #7dd3fc, #38bdf8) !important;
+      box-shadow: 0 6px 30px rgba(56, 189, 248, 0.6) !important;
+    }
+
+    /* Clean Info Footer for Money at Risk & On-It (No Visuals) */
+    .card-footer-info {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 0.5rem !important;
+      padding: 0.72rem 1.2rem !important;
+      background: rgba(255, 255, 255, 0.03) !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      border-radius: 9999px !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.78rem !important;
+      font-weight: 500 !important;
+      color: #94a3b8 !important;
+      width: 100% !important;
+      letter-spacing: 0.02em !important;
+    }
+
+    .status-dot-purple {
+      width: 7px;
+      height: 7px;
+      background: #a855f7;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #a855f7;
+    }
+
+    .status-dot-cyan {
+      width: 7px;
+      height: 7px;
+      background: #38bdf8;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #38bdf8;
+    }
+
+    /* Modal Styles */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 7, 14, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.28s ease;
+    }
+
+    .modal-backdrop.modal-open {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+
+    .modal-dialog {
+      background: #0f1523;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 920px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.85), 0 0 45px rgba(56, 189, 248, 0.15);
+      transform: scale(0.96) translateY(12px);
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .modal-backdrop.modal-open .modal-dialog {
+      transform: scale(1) translateY(0) !important;
+    }
+
+    .modal-header {
+      padding: 1.25rem 1.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(18, 25, 41, 0.7);
+    }
+
+    .modal-tag {
+      font-size: 0.72rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #38bdf8;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .modal-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+
+    .modal-close-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #94a3b8;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .modal-close-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      transform: rotate(90deg);
+    }
+
+    .modal-body {
+      padding: 1.75rem;
+      overflow-y: auto;
+      max-height: calc(90vh - 85px);
+    }
+
+    .modal-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 2.25rem;
+    }
+
+    .gallery-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .gallery-img-wrapper {
+      background: #060911;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .gallery-img-wrapper img {
+      max-width: 100%;
+      max-height: 540px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .gallery-meta {
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: rgba(18, 25, 41, 0.5);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .gallery-step {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      margin-top: 0.15rem;
+    }
+
+    .gallery-caption {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.3rem;
+    }
+
+    .gallery-desc {
+      font-size: 0.88rem;
+      color: #94a3b8;
+      line-height: 1.55;
+    }
+  </style>
 </head>
 <body>
   <!-- Ambient background glow & grid -->
@@ -68,7 +311,7 @@
       </div>
 
       <div class="projects-grid">
-        <!-- Project 1: Money at Risk -->
+        <!-- Project 1: Money at Risk (No Visuals - Proprietary Engine) -->
         <article class="project-card" style="--card-accent: var(--accent-purple); --card-glow: var(--accent-purple-glow);">
           <div class="card-top">
             <span class="card-badge badge-purple">Risk Engine</span>
@@ -76,11 +319,11 @@
           </div>
           <h3 class="project-title">Money at Risk</h3>
           <p class="project-tagline">Capital risk exposure modeling, portfolio volatility analysis, and drawdown assessment.</p>
-          <p class="project-desc">An analytical platform designed to simulate drawdowns, measure exposure volatility, and quantify risk across portfolio positions and capital allocations.</p>
+          <p class="project-desc">An analytical calculation platform designed to simulate drawdowns, measure exposure volatility, and quantify risk across portfolio positions and capital allocations.</p>
           <ul class="project-highlights">
             <li>Capital exposure modeling and scenario simulations</li>
             <li>Risk metrics visualization and loss thresholds</li>
-            <li>Configurable analytical parameters and insights</li>
+            <li>Configurable analytical parameters and quantitative insights</li>
           </ul>
           <div class="project-tags">
             <span class="project-tag">Fintech</span>
@@ -89,17 +332,14 @@
             <span class="project-tag">Data Modeling</span>
           </div>
           <div class="card-actions">
-            <button type="button" class="btn-view-visuals btn-theme-purple" onclick="openVisuals('money-at-risk')">
-              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-              </svg>
-              <span>View Visuals</span>
-            </button>
+            <div class="card-footer-info">
+              <span class="status-dot-purple"></span>
+              <span>Proprietary Risk Engine &bull; Private Source</span>
+            </div>
           </div>
         </article>
 
-        <!-- Project 2: HisabSet -->
+        <!-- Project 2: HisabSet (Visuals Available) -->
         <article class="project-card" style="--card-accent: var(--accent-emerald); --card-glow: var(--accent-emerald-glow);">
           <div class="card-top">
             <span class="card-badge badge-emerald">Fintech</span>
@@ -120,17 +360,17 @@
             <span class="project-tag">Cross-Platform</span>
           </div>
           <div class="card-actions">
-            <button type="button" class="btn-view-visuals btn-theme-emerald" onclick="openVisuals('hisabset')">
-              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            <button type="button" class="btn-visuals-action btn-theme-emerald" onclick="openVisuals('hisabset')">
+              <svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
               </svg>
               <span>View Visuals</span>
             </button>
           </div>
         </article>
 
-        <!-- Project 3: On-It -->
+        <!-- Project 3: On-It (No Visuals - Workflow Platform) -->
         <article class="project-card" style="--card-accent: var(--accent-cyan); --card-glow: var(--accent-cyan-glow);">
           <div class="card-top">
             <span class="card-badge badge-cyan">Productivity</span>
@@ -151,17 +391,14 @@
             <span class="project-tag">Web App</span>
           </div>
           <div class="card-actions">
-            <button type="button" class="btn-view-visuals btn-theme-cyan" onclick="openVisuals('on-it')">
-              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-              </svg>
-              <span>View Visuals</span>
-            </button>
+            <div class="card-footer-info">
+              <span class="status-dot-cyan"></span>
+              <span>Workflow Platform &bull; Private Source</span>
+            </div>
           </div>
         </article>
 
-        <!-- Project 4: Poji -->
+        <!-- Project 4: Poji (Visuals Available) -->
         <article class="project-card" style="--card-accent: var(--accent-cyan); --card-glow: var(--accent-cyan-glow);">
           <div class="card-top">
             <span class="card-badge badge-cyan">Featured Product</span>
@@ -182,10 +419,10 @@
             <span class="project-tag">Mobile App</span>
           </div>
           <div class="card-actions">
-            <button type="button" class="btn-view-visuals btn-theme-cyan" onclick="openVisuals('poji')">
-              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            <button type="button" class="btn-visuals-action btn-theme-cyan" onclick="openVisuals('poji')">
+              <svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
               </svg>
               <span>View Visuals</span>
             </button>
@@ -275,17 +512,6 @@
     document.getElementById("current-year").textContent = new Date().getFullYear();
 
     const visualsData = {
-      "money-at-risk": {
-        title: "Money at Risk — Visual Overview",
-        tag: "Quantitative Risk Engine",
-        images: [
-          {
-            src: "assets/hisabset-desktop.png",
-            caption: "Financial Risk & Analytics Dashboard",
-            desc: "Quantitative risk modeling engine designed to simulate drawdown thresholds, measure portfolio exposure volatility, and calculate capital Value at Risk (VaR)."
-          }
-        ]
-      },
       hisabset: {
         title: "HisabSet — Visual Showcase",
         tag: "Fintech & Accounting Suite",
@@ -299,17 +525,6 @@
             src: "assets/hisabset-invoice.png",
             caption: "E-Invoice & E-Way Bill Generation",
             desc: "100% GST-compliant workflow for instant invoice and bill generation straight from the application."
-          }
-        ]
-      },
-      "on-it": {
-        title: "On-It — Workflow & Execution Platform",
-        tag: "Productivity & Execution",
-        images: [
-          {
-            src: "assets/poji-focus.jpg",
-            caption: "High-Velocity Task Execution",
-            desc: "Dynamic task orchestration designed to streamline priority queues, track execution state in real-time, and eliminate cognitive overhead."
           }
         ]
       },
