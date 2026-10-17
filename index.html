@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>whitedev92 | Developer & Builder Portfolio</title>
+  <meta name="description" content="Portfolio of whitedev92 showcasing Money at Risk, HisabSet, On-It, and Poji.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <!-- Ambient background glow & grid -->
+  <div class="ambient-glow"></div>
+  <div class="grid-overlay"></div>
+
+  <div class="container">
+    <!-- Navigation -->
+    <header class="header">
+      <nav class="nav-bar">
+        <a href="#" class="logo" id="nav-logo">
+          <span class="logo-dot"></span>
+          <span id="header-name">Portfolio</span>
+        </a>
+        <div class="nav-links">
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#deploy">GitHub Setup</a>
+          <a href="#contact" class="nav-btn">Get In Touch</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        <span>Available for new projects & collaborations</span>
+      </div>
+      <h1 class="hero-title">
+        Crafting <span class="text-gradient">products, fintech & risk engines</span>
+      </h1>
+      <p class="hero-subtitle" id="hero-tagline">
+        Building high-impact products, financial tooling & intelligent web applications.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary" id="btn-view-work">
+          <span>Explore Featured Work</span>
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </a>
+        <a href="#deploy" class="btn-secondary" id="btn-deploy-guide">
+          <span>GitHub Deployment Guide</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section" id="projects">
+      <div class="section-header">
+        <span class="section-label">Selected Portfolio</span>
+        <h2 class="section-title">Built with Precision & Purpose</h2>
+      </div>
+
+      <div class="projects-grid" id="projects-container">
+        <!-- Rendered dynamically by script.js -->
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section" id="skills">
+      <div class="section-header">
+        <span class="section-label">Technical Competencies</span>
+        <h2 class="section-title">Tooling & Domain Expertise</h2>
+      </div>
+      <div class="skills-grid" id="skills-container">
+        <!-- Rendered dynamically by script.js -->
+      </div>
+    </section>
+
+    <!-- GitHub Pages Setup Guide -->
+    <section class="deploy-guide-section" id="deploy">
+      <div class="guide-box">
+        <span class="section-label">Step-By-Step Hosting Guide</span>
+        <h3 style="font-size: 1.6rem; margin: 0.4rem 0 1rem; color: #fff;">How to Host This on GitHub Pages in 3 Minutes</h3>
+        <p style="color: var(--text-muted); max-width: 750px; line-height: 1.6;">
+          GitHub Pages provides completely free, fast static web hosting with custom domain support and SSL automatically configured. Here is the exact path to make this live:
+        </p>
+
+        <div class="guide-steps">
+          <div class="step-card">
+            <div class="step-number">STEP 01</div>
+            <h4>Create Repository</h4>
+            <p>Create a repository named <code>whitedev92.github.io</code> (or <code>portfolio</code>) on your GitHub account.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">STEP 02</div>
+            <h4>Push Your Code</h4>
+            <p>Push this folder to branch <code>main</code>. Git commands with your exact URL are ready in the README.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">STEP 03</div>
+            <h4>Live on GitHub Pages</h4>
+            <p>GitHub automatically publishes to <code>https://whitedev92.github.io</code> with free HTTPS and zero maintenance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <footer class="footer" id="contact">
+      <div class="footer-links" id="social-links">
+        <!-- Injected via script.js -->
+      </div>
+      <p id="footer-copy">&copy; <span id="current-year"></span> &bull; Built & deployed on GitHub Pages.</p>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="projects-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
